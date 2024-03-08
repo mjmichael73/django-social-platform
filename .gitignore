@@ -1,0 +1,11 @@
+.idea
+venv
+be/socialplatform/__pycache__/
+be/socialplatform/*/__pycache__/
+be/socialplatform/*/models/__pycache__/
+be/socialplatform/*/migrations/__pycache__/
+be/socialplatform/*/views/__pycache__/
+be/socialplatform/*/forms/__pycache__/
+be/socialplatform/*/templatetags/__pycache__/
+*/__pycache__
+db.sqlite3
