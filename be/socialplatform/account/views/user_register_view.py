@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from account.forms import UserRegistrationForm
+from account.models import Profile
 
 
 def user_register(request):
@@ -11,6 +12,7 @@ def user_register(request):
                 user_form.cleaned_data["password"]
             )
             new_user.save()
+            Profile.objects.create(user=new_user)
             return render(
                 request,
                 "account/register_done.html",
