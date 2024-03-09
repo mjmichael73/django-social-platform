@@ -24,7 +24,6 @@ class UserRegistrationForm(forms.ModelForm):
 
     def clean_email(self):
         cd = self.cleaned_data
-        user_exists = User.objects.filter(email=cd["email"]).exists()
-        if user_exists:
+        if User.objects.filter(email=cd["email"]).exists():
             raise forms.ValidationError("Email has already been used.")
         return cd["email"]
