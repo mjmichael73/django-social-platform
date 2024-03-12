@@ -10,8 +10,7 @@ class Image(models.Model):
     )
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
-    url = models.URLField(max_length=200, blank=True)
-    image = models.ImageField(upload_to="images/%Y/%m/%d/")
+    image_file = models.ImageField(upload_to="images/%Y/%m/%d/")
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True)
 
@@ -29,6 +28,10 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        base_url = "http://127.0.0.1:8000/media/"
+        return base_url
 
     def save(self, *args, **kwargs):
         if not self.slug:

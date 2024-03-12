@@ -7,7 +7,7 @@ from images.forms import ImageCreateForm
 @login_required
 def image_create(request):
     if request.method == "POST":
-        form = ImageCreateForm(data=request.POST)
+        form = ImageCreateForm(request.POST, request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
             new_image = form.save(commit=False)
@@ -16,7 +16,7 @@ def image_create(request):
             messages.success(request, "Image added successfully.")
             return redirect(new_image.get_absolute_url())
     else:
-        form = ImageCreateForm(data=request.GET)
+        form = ImageCreateForm()
     return render(
         request,
         "images/image/create.html",

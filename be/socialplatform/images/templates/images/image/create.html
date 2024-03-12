@@ -7,7 +7,7 @@
 {% block content %}
     <h1>Bookmark an image</h1>
     <img src="{{ request.GET.url }}" class="image-preview" alt="">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
         <input type="submit" value="Bookmark it!">
