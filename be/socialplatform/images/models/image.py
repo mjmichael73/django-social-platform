@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from django.urls import reverse
+from django.conf import settings
 
 
 class Image(models.Model):
@@ -30,8 +32,10 @@ class Image(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        base_url = "http://127.0.0.1:8000/media/"
-        return base_url
+        return reverse("images:detail", args=[self.id, self.slug])
+
+    def get_image_file_url(self):
+        return f"{settings.APP_URL}:{settings.APP_PORT}{settings.MEDIA_URL}{self.image_file.name}"
 
     def save(self, *args, **kwargs):
         if not self.slug:

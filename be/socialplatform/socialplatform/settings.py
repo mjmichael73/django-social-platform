@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -134,3 +134,6 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "account.authentication.EmailAuthBackend",
 ]
+
+APP_URL = os.environ.get("APP_URL", "http://127.0.0.1")
+APP_PORT = os.environ.get("APP_PORT", "8000")
