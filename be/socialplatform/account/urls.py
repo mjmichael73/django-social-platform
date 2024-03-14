@@ -4,6 +4,8 @@ from account.views import (
     dashboard,
     user_register,
     profile_edit,
+    user_list,
+    user_detail,
 )
 from django.contrib.auth import views as auth_views
 
@@ -24,4 +26,6 @@ urlpatterns = [
     path("", dashboard, name="dashboard"),
     path("register/", user_register, name="register"),
     path("edit/", profile_edit, name="edit"),
+    path("users/", user_list, name="user_list"),
+    path("users/<username>", user_detail, name="user_detail"),
 ]
