@@ -7,5 +7,6 @@ be/socialplatform/*/migrations/__pycache__/
 be/socialplatform/*/views/__pycache__/
 be/socialplatform/*/forms/__pycache__/
 be/socialplatform/*/templatetags/__pycache__/
+be/socialplatform/*/helpers/__pycache__/
 */__pycache__
 db.sqlite3
