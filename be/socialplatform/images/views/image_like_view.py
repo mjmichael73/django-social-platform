@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from images.models import Image
+from actions.helpers import create_action
 
 
 @login_required
@@ -15,8 +16,8 @@ def image_like(request):
         image = Image.objects.get(id=image_id)
         if action == "like":
             image.users_like.add(request.user)
+            create_action(request.user, 'likes', image)
         else:
-            print("GOT HERE")
             image.users_like.remove(request.user)
         return JsonResponse({"status": "success"})
     except Image.DoesNotExist:

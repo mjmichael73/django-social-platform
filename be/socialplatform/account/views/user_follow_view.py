@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from account.models import Contact
 from django.contrib.auth.models import User
+from actions.helpers import create_action
 
 
 @require_POST
@@ -18,6 +19,7 @@ def user_follow(request):
                     user_from=request.user,
                     user_to=user
                 )
+                create_action(request.user, 'is following', user)
             else:
                 Contact.objects.filter(user_from=request.user, user_to=user).delete()
             return JsonResponse({"status": "error"})

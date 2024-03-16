@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from account.forms import UserRegistrationForm
 from account.models import Profile
+from actions.helpers import create_action
 
 
 def user_register(request):
@@ -13,6 +14,7 @@ def user_register(request):
             )
             new_user.save()
             Profile.objects.create(user=new_user)
+            create_action(new_user, 'has created an account')
             return render(
                 request,
                 "account/register_done.html",
