@@ -8,7 +8,8 @@ from django.conf import settings
 class Image(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="images_created",
     )
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
