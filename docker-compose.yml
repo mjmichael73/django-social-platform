@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  socialplatform-redis:
+    image: redis:6.2-alpine
+    container_name: socialplatform-redis
+    ports:
+      - "63799:6379"
+    restart: always
+    networks:
+      - socialplatform-net
+
+networks:
+  socialplatform-net:
+    driver: bridge

@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'easy_thumbnails',
+    'debug_toolbar',
 
     'images.apps.ImagesConfig',
     'actions.apps.ActionsConfig',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -148,3 +150,7 @@ ABSOLUTE_URL_OVERRIDES = {
         args=[u.username]
     )
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
